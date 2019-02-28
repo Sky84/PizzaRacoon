@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public Vector2 Resolution;
 
+    public BackgroundManager BackgroundManager;
     public FoodSpawner FoodManager;
     private void Awake()
     {
@@ -29,11 +32,29 @@ public class GameManager : MonoBehaviour
         Init();
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelLoaded;
+        var bgObject = GameObject.FindGameObjectWithTag("BackgroundManager");
+        if (bgObject != null)
+            BackgroundManager = bgObject.GetComponent<BackgroundManager>();
+    }
+
     // Start is called before the first frame update
     void Init()
     {
         UpdateScreenSize();
         Instantiate(inputManager);
+    }
+
+    private void OnLevelLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        var bgObject = GameObject.FindGameObjectWithTag("BackgroundManager");
+        var fdM = GameObject.FindGameObjectWithTag("FoodManager");
+        if (bgObject != null)
+            BackgroundManager = bgObject.GetComponent<BackgroundManager>();
+        if (fdM != null)
+            FoodManager = fdM.GetComponent<FoodSpawner>();
     }
 
     private void Update()

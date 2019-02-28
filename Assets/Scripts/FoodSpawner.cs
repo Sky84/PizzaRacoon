@@ -14,7 +14,7 @@ public enum FoodType
 public class FoodSpawner : MonoBehaviour
 {
     public int TimeStartWait;
-    public int SpeedFood;
+    public float SpeedFood;
 
     [Header("Spawn Settings")]
     public bool SpawnFood;
@@ -51,7 +51,6 @@ public class FoodSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.instance.FoodManager = this;
         if (SpawnFood)
             StartCoroutine("SpawnFood");
         else

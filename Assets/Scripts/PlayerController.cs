@@ -1,4 +1,5 @@
 ﻿using DragonBones;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -32,6 +33,12 @@ public class PlayerController : MonoBehaviour
     public int FatGap2;
     public int OverfatGap;
 
+    [Header("Speed By Weight")]
+    public int SpeedFit;
+    public int SpeedFat;
+    public int SpeedFat2;
+    public int SpeedOverfat;
+
     private Rigidbody2D rigid;
     private CapsuleCollider2D colliderCaps;
     private UnityArmatureComponent currentArmature;
@@ -39,20 +46,36 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private int score;
     private int weight;
+    private FoodSpawner foodManager;
     private Dictionary<int, ArmatureFactoryComponent> weightArmatures;
+    private Dictionary<int, int> speedFoods;
 
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         colliderCaps = GetComponent<CapsuleCollider2D>();
-
+        foodManager = GameManager.instance.FoodManager;
 
         InitArmature();
+        speedFoods = new Dictionary<int, int>
+        {
+            {FitGap,  SpeedFit},
+            {FatGap,  SpeedFat},
+            {FatGap2,  SpeedFat2},
+            {OverfatGap,  SpeedOverfat},
+        };
 
-        SetCurrentArmature(weightArmatures[FitGap].ArmatureName);
+        SetWeightVisualyByGap(FatGap2);
         currentArmature.animation.FadeIn("Run1", 0.25f);
         ScoreText.text = "x 0";
-        weight = 10;
+    }
+
+    private void SetWeightVisualyByGap(int gap)
+    {
+        var speed = (speedFoods[gap] * Time.deltaTime);
+        foodManager.SpeedFood = speed;
+        GameManager.instance.BackgroundManager.HorizontalSpeedBackground = speed *-1;
+        SetCurrentArmature(weightArmatures[gap].ArmatureName);
     }
 
     private void InitArmature()
@@ -165,8 +188,8 @@ public class PlayerController : MonoBehaviour
             armatureIndex = FatGap2;
         else
             armatureIndex = OverfatGap;
-
-        SetCurrentArmature(weightArmatures[armatureIndex].ArmatureName);
+        
+        SetWeightVisualyByGap(armatureIndex);
     }
 
     private bool IsGrounded()

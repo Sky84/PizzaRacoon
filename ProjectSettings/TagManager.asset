@@ -16,6 +16,7 @@ TagManager:
   - ToxicFood
   - GoodFood
   - FoodManager
+  - BackgroundManager
   layers:
   - Default
   - TransparentFX

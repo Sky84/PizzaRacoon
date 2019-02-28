@@ -11,7 +11,7 @@ public class BackgroundManager : MonoBehaviour
     public GameObject[] Backgrounds4;
     public GameObject[] Backgrounds5;
 
-    public int HorizontalSpeedBackground;
+    public float HorizontalSpeedBackground;
 
     private float MaxRightX;
     private float camLeftBorder;

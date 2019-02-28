@@ -91,6 +91,10 @@ MonoBehaviour:
   BadFoodWeight: 10
   ToxicFoodWeight: 0
   FitGap: 10
-  FatGap: 20
-  FatGap2: 30
-  OverfatGap: 40
+  FatGap: 50
+  FatGap2: 100
+  OverfatGap: 150
+  SpeedFit: 700
+  SpeedFat: 650
+  SpeedFat2: 600
+  SpeedOverfat: 400
