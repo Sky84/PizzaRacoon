@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3636279723226633197}
   - component: {fileID: 3828746505934944102}
+  - component: {fileID: 1098198533}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,3 +46,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputManager: {fileID: 4913726560354917984, guid: 172dbddd563dd75438d49c8bf3d5c590,
     type: 3}
+  CameraMinDimensions: {x: 0, y: 0, z: 0}
+  CameraMaxDimensions: {x: 0, y: 0, z: 0}
+  Resolution: {x: 0, y: 0}
+  Player: {fileID: 0}
+  BackgroundManager: {fileID: 0}
+  FoodManager: {fileID: 0}
+  Roulette: {fileID: 0}
+  CanvaManager: {fileID: 0}
+  VideoPlayer: {fileID: 0}
+--- !u!81 &1098198533
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849648443383768613}
+  m_Enabled: 1

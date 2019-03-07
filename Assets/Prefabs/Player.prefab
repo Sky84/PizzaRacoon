@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpForce: 400
+  CurrentWeight: 0
   ScoreText: {fileID: 0}
   GoodFoodScore: 10
   BadFoodScore: 30
@@ -94,7 +95,9 @@ MonoBehaviour:
   FatGap: 50
   FatGap2: 100
   OverfatGap: 150
+  DyingGap: 500
   SpeedFit: 700
   SpeedFat: 650
-  SpeedFat2: 600
+  SpeedFat2: 500
   SpeedOverfat: 400
+  SpeedLoose: 0

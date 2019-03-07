@@ -799,7 +799,7 @@ MonoBehaviour:
   - {fileID: 7632068631945243579}
   - {fileID: 7632068630072223013}
   - {fileID: 7632068631283495100}
-  HorizontalSpeedBackground: -1
+  HorizontalSpeedBackground: 0
 --- !u!1 &7632068631261810025
 GameObject:
   m_ObjectHideFlags: 0

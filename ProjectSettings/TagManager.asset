@@ -17,6 +17,7 @@ TagManager:
   - GoodFood
   - FoodManager
   - BackgroundManager
+  - Roulette
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     public Touch Touch;
     public int NbrTouches;
     public bool Jump;
+    public bool BlockInput;
 
 
     void Awake()
@@ -28,6 +29,8 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (BlockInput)
+            return;
         Jump = (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetMouseButton(0);
         NbrTouches = Input.touchCount;
         if(NbrTouches > 0)
